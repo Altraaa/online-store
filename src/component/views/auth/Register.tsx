@@ -105,7 +105,7 @@ const RegisterView = () => {
             <div className="w-full pt-1">
               <button
                 type="submit"
-                className="w-full py-2 px-5 bg-red-500 hover:bg-red-700 text-white rounded-xl font-semibold transition-all ease-in-out duration-300"
+                className="w-full py-2 px-5 bg-red-500 hover:bg-red-700 text-white rounded-xl font-semibold transition-all ease-in-out duration-300 text-sm"
               >
                 {isLoading ? "Loading..." : "Register"}
               </button>

@@ -82,3 +82,22 @@ export async function signIn(email: string) {
     return null;
   }
 }
+
+export async function loginWithGoogle(data: any, callBack: Function) {
+  const q = query(collection(firestore, "users"), where("email", "==", data.email));
+
+  const snapshot = await getDocs(q);
+  const googleData = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  if (googleData.length > 0) {
+    callBack(googleData[0]);
+  } else {
+    data.role = "member";
+    await addDoc(collection(firestore, "users"), data).then(() => {
+      callBack(data);
+    })
+  }
+}

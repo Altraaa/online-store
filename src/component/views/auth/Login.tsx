@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
@@ -7,7 +8,9 @@ const LoginView = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  const callbackUrl: any = query.callbackUrl || "/";
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
@@ -18,11 +21,12 @@ const LoginView = () => {
         redirect: false,
         email: form.email.value,
         password: form.password.value,
+        callbackUrl
       });
       if (!res?.error) {
         form.reset();
         setIsLoading(false);
-        push("/");
+        push(callbackUrl);
       } else {
         setIsLoading(false);
         setError("Email or Password is incorrect");
@@ -35,7 +39,7 @@ const LoginView = () => {
 
   return (
     <div className="h-screen w-screen flex justify-center bg-red-300 items-center">
-      <div className="h-[400px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
+      <div className="h-[460px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
         <div className="w-1/2 flex flex-col h-full bg-red-100 rounded-2xl justify-center items-center">
           <p className="text-lg">Hi Beloved Customers, welcome back to</p>
           <h1 className="text-3xl font-bold">Altraa Store</h1>
@@ -73,9 +77,23 @@ const LoginView = () => {
             <div className="w-full mt-1">
               <button
                 type="submit"
-                className="w-full py-2 px-5 bg-red-500 hover:bg-red-700 text-white rounded-xl font-semibold transition-all ease-in-out duration-300"
+                className="w-full py-2 px-5 bg-red-500 hover:bg-red-700 text-white rounded-xl font-semibold transition-all ease-in-out duration-300 text-sm"
               >
                 {isLoading ? "Loading..." : "Login"}
+              </button>
+            </div>
+            <div className="w-full gap-4 flex items-center">
+              <hr className="w-1/2" />
+              <p>or</p>
+              <hr className="w-1/2" />
+            </div>
+            <div className="w-full">
+              <button
+                type="button"
+                onClick={() => signIn("google", {callbackUrl, redirect: false})}
+                className="w-full gap-2 inline-flex justify-center items-center text-center py-2 px-5 border-2 border-red-500 text-sm hover:bg-red-700 hover:text-white rounded-xl font-semibold transition-all ease-in-out duration-300"
+              >
+                <i className="bx text-3xl bxl-google"></i> Login With Google
               </button>
             </div>
             <div className="flex items-center w-full justify-center mt-2">
