@@ -15,12 +15,6 @@ export default function App({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Head>
-        <link
-          href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-          rel="stylesheet"
-        ></link>
-      </Head>
       <div className={poppins.className}>
         <Component {...pageProps} />
       </div>

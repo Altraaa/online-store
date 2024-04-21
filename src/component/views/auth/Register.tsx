@@ -1,3 +1,5 @@
+import Button from "@/component/shared-component/button/button";
+import TextField from "@/component/shared-component/textfield/textField";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
@@ -39,7 +41,7 @@ const RegisterView = () => {
 
   return (
     <div className="h-screen w-screen flex justify-center bg-red-300 items-center">
-      <div className="h-[470px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
+      <div className="h-[520px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
         <div className="w-1/2 flex flex-col h-full bg-red-100 rounded-2xl justify-center items-center">
           <p className="text-lg">Hi Visitors, Welcome to our Website</p>
           <h1 className="text-3xl font-bold">Altraa Store</h1>
@@ -49,66 +51,39 @@ const RegisterView = () => {
             Register
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
-            <div className="flex gap-1 flex-col">
-              <label htmlFor="fullname" className="text-sm">
-                Username
-              </label>
-              <input
-                type="text"
-                name="fullname"
-                id="fullname"
-                className="border-2 text-sm px-2 py-1 outline-red-600 rounded-xl"
-                placeholder="Username"
-              />
-            </div>
-            <div className="flex gap-1 flex-col">
-              <label htmlFor="email" className="text-sm">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="border-2 text-sm px-2 py-1 outline-red-600 rounded-xl"
-                placeholder="Email"
-              />
-            </div>
-            <div className="flex gap-1 flex-col">
-              <label htmlFor="password" className="text-sm">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="border-2 text-sm px-2 py-1 outline-red-600 rounded-xl"
-                placeholder="Password"
-              />
-            </div>
-            <div className="flex gap-1  flex-col">
-              <label htmlFor="phone" className="text-sm">
-                Phone
-              </label>
-              <input
-                type="number"
-                name="phone"
-                id="phone"
-                className="border-2 text-sm px-2 py-1 outline-red-600 rounded-xl"
-                placeholder="Phone"
-              />
-            </div>
+            <TextField
+              name="fullname"
+              type="text"
+              label="Username"
+              placeholder="Enter your Username"
+            />
+            <TextField
+              name="email"
+              type="email"
+              label="Email"
+              placeholder="Enter your Email"
+            />
+            <TextField
+              name="password"
+              type="password"
+              label="Password"
+              placeholder="Enter your Password"
+            />
+            <TextField
+              name="phone"
+              type="number"
+              label="Phone"
+              placeholder="Enter your Phone"
+            />
             {error && (
               <p className="text-red-500 inline-flex justify-center py-2">
                 {error}
               </p>
             )}
-            <div className="w-full pt-1">
-              <button
-                type="submit"
-                className="w-full py-2 px-5 bg-red-500 hover:bg-red-700 text-white rounded-xl font-semibold transition-all ease-in-out duration-300 text-sm"
-              >
+            <div className="w-full py-2">
+              <Button type="submit">
                 {isLoading ? "Loading..." : "Register"}
-              </button>
+              </Button>
             </div>
             <div className="flex items-center w-full justify-center mt-2">
               <p className="text-sm">Already have an account? {""} </p>
