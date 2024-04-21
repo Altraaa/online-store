@@ -4,7 +4,7 @@ import { compare } from "bcrypt";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import jwt from "jsonwebtoken";
-import { loginWithGoogle, signIn } from "@/services/auth";
+import { loginWithGoogle, signIn } from "@/services/auth/index";
 
 const authOptions: NextAuthOptions = {
   session: {
