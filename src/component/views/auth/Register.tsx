@@ -1,8 +1,7 @@
-import AuthLayout from "@/component/fragments/AuthLayout/AuthLayout";
+import AuthLayout from "@/component/Layouts/AuthLayout/AuthLayout";
 import Button from "@/component/shared-component/button/button";
 import TextField from "@/component/shared-component/textfield/textField";
 import authServices from "@/services/auth/services";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
