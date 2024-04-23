@@ -1,22 +1,22 @@
-import { addData, retrieveDataByField } from "@/lib/firebase/service";
 import bcrypt from "bcrypt";
+import { addData, retrieveDataByField } from "@/lib/firebase/service";
 
 export async function signUp(
   userData: {
+    fullname: string;
     email: string;
     password: string;
-    fullname: string;
     phone: string;
-    role: string;
-    created_at: Date;
-    updated_at: Date;
+    role?: string;
+    created_at?: Date;
+    updated_at?: Date;
   },
-  callBack: Function
+  callback: Function
 ) {
   const data = await retrieveDataByField("users", "email", userData.email);
 
   if (data.length > 0) {
-    callBack(false);
+    callback(false);
   } else {
     if (!userData.role) {
       userData.role = "member";
@@ -24,8 +24,8 @@ export async function signUp(
     userData.password = await bcrypt.hash(userData.password, 10);
     userData.created_at = new Date();
     userData.updated_at = new Date();
-    addData("users", userData, (result: boolean) => {
-      callBack(result);
+    await addData("users", userData, (result: boolean) => {
+      callback(result);
     });
   }
 }
@@ -41,18 +41,27 @@ export async function signIn(email: string) {
 }
 
 export async function loginWithGoogle(
-  data: { email: string; role?: string },
-  callBack: Function
+  data: {
+    email: string;
+    role?: string;
+    created_at?: Date;
+    updated_at?: Date;
+    password?: string;
+  },
+  callback: Function
 ) {
-  const googleData = await retrieveDataByField("users", "email", data.email);
+  const user = await retrieveDataByField("users", "email", data.email);
 
-  if (googleData.length > 0) {
-    callBack(googleData[0]);
+  if (user.length > 0) {
+    callback(user[0]);
   } else {
     data.role = "member";
+    data.created_at = new Date();
+    data.updated_at = new Date();
+    data.password = "";
     await addData("users", data, (result: boolean) => {
       if (result) {
-        callBack(data);
+        callback(data);
       }
     });
   }

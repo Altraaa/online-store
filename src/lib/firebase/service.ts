@@ -1,11 +1,13 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
   getFirestore,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import app from "./init";
@@ -46,7 +48,11 @@ export async function retrieveDataByField(
   return data;
 }
 
-export async function addData(collectionName: string, data: any, callBack: Function) {
+export async function addData(
+  collectionName: string,
+  data: any,
+  callBack: Function
+) {
   await addDoc(collection(firestore, collectionName), data)
     .then(() => {
       callBack(true);
@@ -54,5 +60,36 @@ export async function addData(collectionName: string, data: any, callBack: Funct
     .catch((error) => {
       callBack(false);
       console.log(error);
+    });
+}
+
+export async function updateData(
+  collectionName: string,
+  id: string,
+  data: any,
+  callback: Function
+) {
+  const docRef = doc(firestore, collectionName, id);
+  await updateDoc(docRef, data)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      callback(false);
+    });
+}
+
+export async function deleteData(
+  collectionName: string,
+  id: string,
+  callBack: Function
+) {
+  const docRef = doc(firestore, collectionName, id);
+  await deleteDoc(docRef)
+    .then(() => {
+      callBack(true);
+    })
+    .catch(() => {
+      callBack(false);
     });
 }
