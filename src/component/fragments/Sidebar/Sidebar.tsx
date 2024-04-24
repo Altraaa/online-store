@@ -17,7 +17,7 @@ const Sidebar = (props: SideBarproos) => {
   return (
     <div className="w-72 h-screen top-0 left-0 p-6 border-r-2 border-r-red-700 space-y-5 flex flex-col justify-between shadow-2xl bg-red-50 shadow-slate-400">
       <div className="flex flex-col space-y-4">
-        <h1 className="font-semibold inline-flex items-center justify-center text-3xl">
+        <h1 className="font-semibold w-full inline-flex items-center justify-center text-3xl">
           Admin Panel
         </h1>
         <hr className="mt-2" />
@@ -51,3 +51,5 @@ const Sidebar = (props: SideBarproos) => {
 };
 
 export default Sidebar;
+
+          

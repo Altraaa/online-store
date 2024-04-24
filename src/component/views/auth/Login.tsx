@@ -45,6 +45,7 @@ const LoginView = () => {
         title="Altraaa Store"
         label="Login"
         link="/auth/register"
+        error={error}
         linkText="Sign Up here!"
         authQuestion="Don't have an account?"
       >

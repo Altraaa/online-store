@@ -4,6 +4,7 @@ type AuthLayoutProps = {
   description?: string;
   title?: string;
   label?: string;
+  error?: string;
   children?: React.ReactNode;
   link: string;
   authQuestion?: string;
@@ -11,7 +12,7 @@ type AuthLayoutProps = {
 };
 
 const AuthLayout = (props: AuthLayoutProps) => {
-  const { description, title, label, children, link, authQuestion, linkText } = props;
+  const { description, error, title, label, children, link, authQuestion, linkText } = props;
 
   return (
     <div className="h-[520px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">

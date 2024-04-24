@@ -40,6 +40,7 @@ const RegisterView = () => {
         description="Hi Visitors, Welcome to our Website"
         title="Altraaa Store"
         label="Register"
+        error={error}
         link="/auth/login"
         linkText="Sign In here!"
         authQuestion="Already have an account?"
