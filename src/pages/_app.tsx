@@ -5,6 +5,7 @@ import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useRouter } from "next/router";
+import Footer from "@/component/fragments/Footer/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,10 +15,10 @@ const poppins = Poppins({
 const theme = createTheme({
   typography: {
     fontFamily: poppins.style.fontFamily,
-  }
+  },
 })
 
-const disableNavbar = ["auth", "admin"];
+const disableNavbar = ["auth", "admin", "member"];
 
 export default function App({
   Component,
@@ -28,10 +29,10 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
-      <div className={poppins.className}>
-        {!disableNavbar.includes(pathname.split("/")[1]) && <NavbarView />}
-        <Component {...pageProps} />
-      </div>
+        <div className={poppins.className}>
+          {!disableNavbar.includes(pathname.split("/")[1]) && <NavbarView />}
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </SessionProvider>
   );

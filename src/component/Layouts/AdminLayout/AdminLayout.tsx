@@ -2,6 +2,7 @@ import Sidebar from "@/component/fragments/Sidebar/Sidebar";
 import { title } from "process";
 
 type AdminProps = {
+  label: string;
   children: React.ReactNode;
 };
 
@@ -23,11 +24,14 @@ const ListItem = [
   }
 ];
 const AdminLayout = (props: AdminProps) => {
-  const { children } = props;
+  const { children, label } = props;
   return (
     <div className="flex">
-      <Sidebar lists={ListItem} />
-      <div className="w-full  py-10 px-12">{children}</div>
+      <Sidebar label="Admin Page" lists={ListItem} />
+      <div className="w-full py-10 px-12 space-y-4">
+        <h1 className="text-3xl font-semibold">{label}</h1>
+        {children}
+      </div>
     </div>
   );
 };

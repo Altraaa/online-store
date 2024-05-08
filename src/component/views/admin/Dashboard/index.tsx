@@ -3,9 +3,9 @@ import AdminLayout from "@/component/Layouts/AdminLayout/AdminLayout";
 const DashboardAdminview = () => {
     return (
       <div>
-        <AdminLayout>
+        <AdminLayout label="Dashboard">
             <div>
-                <h1>Admin Page</h1>
+                
             </div>
         </AdminLayout>
       </div>

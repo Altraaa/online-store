@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 type SideBarproos = {
+  label: string;
   lists: Array<{
     title: string;
     url: string;
@@ -12,16 +13,16 @@ type SideBarproos = {
 };
 
 const Sidebar = (props: SideBarproos) => {
-  const { lists } = props;
+  const { lists, label } = props;
   const { pathname } = useRouter();
   return (
     <div className="w-72 h-screen top-0 left-0 p-6 border-r-2 border-r-red-700 space-y-5 flex flex-col justify-between shadow-2xl bg-red-50 shadow-slate-400">
       <div className="flex flex-col space-y-4">
-        <h1 className="font-semibold w-full inline-flex items-center justify-center text-3xl">
-          Admin Panel
+        <h1 className="font-semibold w-full inline-flex items-center justify-center text-2xl">
+          {label}
         </h1>
-        <hr className="mt-2" />
-        <div className="flex flex-col w-full gap-6">
+        <hr className="mt-2 border-t-red-700 border-t-2" />
+        <div className="flex flex-col w-full gap-3">
           {lists.map((list, index) => (
             <Link
               href={list.url}
@@ -31,7 +32,7 @@ const Sidebar = (props: SideBarproos) => {
               key={list.title}
             >
               <i className={`text-3xl bx ${list.icon}`} />
-              <h2 className="text-xl">{list.title}</h2>
+              <h2 className="text-lg">{list.title}</h2>
             </Link>
           ))}
         </div>

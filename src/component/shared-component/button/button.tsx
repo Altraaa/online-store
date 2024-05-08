@@ -4,6 +4,7 @@ type Buttontypes = {
   children?: React.ReactNode;
   className?: string;
   label?: string;
+  href?: string;
   variant?: "contained" | "outlined" | "icon";
 };
 
@@ -13,17 +14,18 @@ const Button = (props: Buttontypes) => {
     onClick,
     label,
     children,
+    href,
     className,
     variant = "contained",
   } = props;
 
   const contained =
-    "bg-red-500 py-2 w-full px-5 text-sm rounded-xl font-semibold text-white hover:bg-red-700";
+    "bg-red-500 py-2 cursor-pointer w-full px-5 text-sm rounded-xl font-semibold text-white hover:bg-red-700";
 
   const outlined =
-    "border-2 gap-2 py-2 w-full text-sm px-5 rounded-xl font-semibold inline-flex text-black justify-center items-center text-center border-2 border-red-500 text-sm hover:bg-red-700 hover:text-white ";
+    "border-2 gap-2 lg:py-2 py-1 cursor-pointer w-full text-sm px-5 rounded-xl font-semibold inline-flex text-black justify-center items-center text-center border-2 border-red-500 text-sm hover:bg-red-700 hover:text-white ";
 
-  const icon = "text-2xl"
+  const icon = "text-2xl cursor-pointer";
 
   const styles: string[] = [];
 

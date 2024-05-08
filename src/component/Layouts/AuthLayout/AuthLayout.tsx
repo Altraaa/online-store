@@ -15,7 +15,7 @@ const AuthLayout = (props: AuthLayoutProps) => {
   const { description, error, title, label, children, link, authQuestion, linkText } = props;
 
   return (
-    <div className="h-[520px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
+    <div className="h-[450px] w-[900px] flex justify-center bg-white shadow-xl backdrop-blur-lg rounded-2xl border-2 border-red-600">
       <div className="w-1/2 flex flex-col h-full bg-red-100 rounded-2xl justify-center items-center">
         <p className="text-lg">{description}</p>
         <h1 className="text-3xl font-bold">{title}</h1>

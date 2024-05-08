@@ -48,6 +48,7 @@ const authOptions: NextAuthOptions = {
         token.fullname = user.fullname;
         token.phone = user.phone;
         token.role = user.role;
+        token.id = user.id;
       }
 
       if (account?.provider === "google") {
@@ -78,6 +79,9 @@ const authOptions: NextAuthOptions = {
       }
       if ("role" in token) {
         session.user.role = token.role;
+      }
+      if ("id" in token) {
+        session.user.id = token.id;
       }
 
       const accessToken = jwt.sign(token, process.env.NEXTAUTH_SECRET || "", {

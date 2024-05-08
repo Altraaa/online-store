@@ -29,9 +29,8 @@ const UsersAdminView = (props: AdminUsersProps) => {
     }, [Users])
   return (
     <>
-      <AdminLayout>
+      <AdminLayout label="User Management">
         <div className="space-y-6">
-          <h1 className="text-3xl font-semibold">USER MANAGEMENT</h1>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -82,7 +81,7 @@ const UsersAdminView = (props: AdminUsersProps) => {
           </TableContainer>
         </div>
       </AdminLayout>
-      <div className="w-full h-full fixed">
+      <div className="w-full h-full hidden fixed">
         {Object.keys(updatedUser).length && (
           <ModalUpdate
             updatedUser={updatedUser}
@@ -90,8 +89,6 @@ const UsersAdminView = (props: AdminUsersProps) => {
             setUsersData={setUsersData}
           />
         )}
-      </div>
-      <div className="w-full h-full fixed">
         {Object.keys(deletedUser).length && (
           <ModalDelete
             deletedUser={deletedUser}

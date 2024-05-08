@@ -72,9 +72,9 @@ const LoginView = () => {
             <Button type="submit">{isLoading ? "Loading..." : "Login"}</Button>
           </div>
           <div className="w-full gap-4 flex items-center">
-            <hr className="w-1/2" />
+            <hr className="w-1/2 border-t-red-200 border-t-2" />
             <p>or</p>
-            <hr className="w-1/2" />
+            <hr className="w-1/2 border-t-red-200 border-t-2" />
           </div>
           <div className="w-full">
             <Button
