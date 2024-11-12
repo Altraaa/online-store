@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="block border-t-2 border-t-gray-300 mt-5" />
-        <p className="text-gray-300 text-sm mt-3 inline-flex justify-center w-full">
+        <p className="text-gray-300 text-sm mt-3 text-center inline-flex justify-center w-full">
           Copyright &copy; 2022 - Anissa Store. All rights reserved
         </p>
       </main>
