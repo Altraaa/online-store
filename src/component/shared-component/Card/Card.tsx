@@ -16,9 +16,9 @@ const Card = (props: CardProps) => {
       className={`bg-white shadow-lg rounded-lg overflow-hidden ${className}`}
     >
       {children}
-      <div className="p-6 space-y-2">
+      <div className="p-6 space-y-2 ">
         <h3 className="font-bold text-xl">{title}</h3>
-        <p className="text-gray-700 text-sm md:min-h-36 lg:min-h-32">{desc}</p>
+        <p className="text-gray-700 text-sm md:min-h-36 lg:min-h-32 xl:min-h-44">{desc}</p>
         <div className="pt-2">
           <Button label={label} type={type} variant={variant} />
         </div>
